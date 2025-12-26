@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head -->
+  <circle cx="100" cy="40" r="22"/>
+
+  <!-- Neck -->
+  <rect x="90" y="62" width="20" height="16" rx="8"/>
+
+  <!-- Torso -->
+  <rect x="65" y="78" width="70" height="140" rx="35"/>
+
+  <!-- Arms -->
+  <rect x="25" y="90" width="30" height="120" rx="15"/>
+  <rect x="145" y="90" width="30" height="120" rx="15"/>
+
+  <!-- Legs -->
+  <rect x="75" y="220" width="22" height="150" rx="12"/>
+  <rect x="103" y="220" width="22" height="150" rx="12"/>
+</svg>

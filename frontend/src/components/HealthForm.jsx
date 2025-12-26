@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function HealthForm({ onResult }) {
+function HealthForm({ onResult, onInputs }) {
   const [form, setForm] = useState({
     age: "",
     bmi: "",
@@ -16,21 +16,23 @@ function HealthForm({ onResult }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const payload = {
+      age: Number(form.age),
+      bmi: Number(form.bmi),
+      bp_sys: Number(form.bp_sys),
+      sleep: Number(form.sleep),
+      stress: Number(form.stress)
+    };
+
     const response = await fetch("http://127.0.0.1:5000/assess-health", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        age: Number(form.age),
-        bmi: Number(form.bmi),
-        bp_sys: Number(form.bp_sys),
-        sleep: Number(form.sleep),
-        stress: Number(form.stress)
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
 
     const data = await response.json();
+
+    onInputs(payload);              // ✅ now defined
     onResult(data.digital_twin);
   };
 

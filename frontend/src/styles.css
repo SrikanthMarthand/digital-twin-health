@@ -1,37 +1,84 @@
+/* ========== GLOBAL ========== */
 body {
   margin: 0;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  font-family: "Segoe UI", sans-serif;
-  color: #fff;
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f6f9fc;
+  color: #0f172a;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* ========== LAYOUT ========== */
 .container {
-  max-width: 900px;
+  max-width: 1280px;
   margin: auto;
-  padding: 30px;
+  padding: 32px;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.12);
+.section {
+  margin-top: 32px;
+}
+
+/* ========== HEADER ========== */
+.header {
+  background: linear-gradient(135deg, #0f4c81, #0b3a60);
+  color: white;
+  padding: 32px 40px;
   border-radius: 16px;
-  padding: 25px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  margin-bottom: 25px;
+  box-shadow: 0 12px 32px rgba(15, 76, 129, 0.25);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
 }
 
+.header p {
+  margin-top: 8px;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* ========== GRID ========== */
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: #0f4c81;
+}
+
+/* ========== FORM ========== */
 input {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border-radius: 10px;
-  border: none;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  font-size: 16px;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0f4c81;
+  box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
 }
 
 button {
@@ -39,41 +86,67 @@ button {
   padding: 14px;
   border-radius: 12px;
   border: none;
-  font-size: 18px;
-  font-weight: bold;
-  background: #00c6ff;
+  background: #0f4c81;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 button:hover {
-  background: #00a3cc;
+  background: #09375e;
 }
 
-.result {
-  text-align: center;
+/* ========== DIGITAL TWIN ========== */
+.body-twin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-.badge {
-  padding: 12px 22px;
-  border-radius: 20px;
-  font-size: 20px;
-  display: inline-block;
-  margin-top: 15px;
+.risk-label {
+  margin-top: 14px;
+  font-size: 17px;
+  font-weight: 600;
 }
 
-.Healthy {
-  background: #2ecc71;
+/* ========== SCORE ========== */
+.score-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.Moderate {
-  background: #f1c40f;
-  color: #000;
+/* ========== ORGAN OVERLAY ========== */
+.organ-overlay {
+  position: absolute;
+  pointer-events: none;
 }
 
-.High {
-  background: #e67e22;
+/* ========== INTERPRETATION ========== */
+.interpretation {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #334155;
 }
 
-.Critical {
-  background: #e74c3c;
+/* ========== FOOTER ========== */
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #475569;
+  background: #ffffff;
+  padding: 18px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+.card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
 }

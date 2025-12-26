@@ -7,6 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 from fuzzy.fuzzy_engine import fuzzy_health_risk
+from ann.ann_model import predict_health_score
 
 app = Flask(__name__)
 CORS(app)
@@ -33,22 +34,26 @@ def assess_health():
     sleep = data.get("sleep")
     stress = data.get("stress")
 
-    # Normalize (same logic as preprocessing)
+    # Normalize inputs
     row = {
         "age": normalize(age, 0, 100),
         "bmi": normalize(bmi, 10, 40),
         "bp_sys": normalize(bp_sys, 80, 200),
         "sleep": normalize(sleep, 0, 12),
-        "stress": stress  # already normalized (0–1)
+        "stress": stress
     }
 
-    # Fuzzy inference
+    # ANN prediction (numeric)
+    ann_score = predict_health_score(row)
+
+    # Fuzzy inference (linguistic)
     risk = fuzzy_health_risk(row)
 
-    # Digital Twin Output
+    # Digital Twin Output (HYBRID)
     response = {
         "digital_twin": {
             "health_risk": risk,
+            "health_score": round(ann_score, 1),
             "inputs": row
         }
     }
